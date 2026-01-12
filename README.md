@@ -74,6 +74,12 @@
 * [LabelImg](https://github.com/tzutalin/labelImg)
 * Provide the function to convert the DICOM Overalys to a DICOM SEG object.
 
+### NIfTI Format Support
+* **Display NIfTI (.nii, .nii.gz)**: 
+  - Supports dragging and dropping NIfTI files directly into the viewer.
+  - Integration via [Niivue](https://github.com/niivue/niivue) plugin.
+
+
 ## Plugins
 * Some advanced features are separated from the native parts of Bluelight to facilitate better performance. All supported functions are placed in folder `/scripts/plugin`. Using the [config](/bluelight/data/plugin.json) enable the selected plugins. If disableCatch is set as false, the plugin is enabled.
 

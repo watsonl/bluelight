@@ -19,6 +19,11 @@ function html_onload() {
         else if (fileExtension == "jpeg") loadPicture(URL.createObjectURL(this.files[k]));
         else if (fileExtension == "png") loadPicture(URL.createObjectURL(this.files[k]));
         else if (fileExtension == "webp") loadPicture(URL.createObjectURL(this.files[k]));
+        else if (fileExtension == "nii" || (this.files[k].name.endsWith(".nii.gz"))) {
+          if (typeof NiivuePlugin !== 'undefined' && NiivuePlugin.loadNifti) {
+            NiivuePlugin.loadNifti(URL.createObjectURL(this.files[k]));
+          }
+        }
         else {
           let reader = new FileReader();
           reader.readAsArrayBuffer(this.files[k]);
@@ -86,6 +91,11 @@ function html_onload() {
         else if (fileExtension == "jpeg") loadPicture(url);
         else if (fileExtension == "png") loadPicture(url);
         else if (fileExtension == "webp") loadPicture(url);
+        else if (fileExtension == "nii" || (file.name.endsWith(".nii.gz"))) {
+          if (typeof NiivuePlugin !== 'undefined' && NiivuePlugin.loadNifti) {
+            NiivuePlugin.loadNifti(url);
+          }
+        }
         else {
           let reader = new FileReader();
           reader.readAsArrayBuffer(file);

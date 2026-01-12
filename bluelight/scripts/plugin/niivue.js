@@ -141,4 +141,25 @@ NiivuePlugin.loadCurrentSeries = function () {
     }
 }
 
+NiivuePlugin.loadNifti = function (url) {
+    NiivuePlugin.enter();
+    if (NiivuePlugin.nv) {
+        var volumeList = [{
+            url: url,
+        }];
+        NiivuePlugin.nv.loadVolumes(volumeList);
+    } else {
+        // Retry if not initialized yet? enter() initializes it but async loading of script might delay?
+        // enter() checks if niivue is defined.
+        setTimeout(function () {
+            if (NiivuePlugin.nv) {
+                var volumeList = [{
+                    url: url,
+                }];
+                NiivuePlugin.nv.loadVolumes(volumeList);
+            }
+        }, 500);
+    }
+}
+
 loadNiivuePlugin();
